@@ -43,6 +43,11 @@ public class PersonaServiceImpl {
     return personaMapper.toDto(persona);
   }
 
+  public PersonaResponse createByForm(Persona persona) {
+    personaRepository.save(persona);
+    return personaMapper.toDto(persona);
+  }
+
   public PersonaResponse edit(PersonaRequest request, Long id) {
     Persona persona = personaMapper.toEntity(request);
     persona.setId(id);

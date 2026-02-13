@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.examen.examen2rico.dtos.PersonaRequest;
 import com.examen.examen2rico.models.Persona;
 import com.examen.examen2rico.services.PersonaServiceImpl;
 
@@ -39,6 +40,8 @@ public class PersonaMvcController {
     if (br.hasErrors()) {
       return "form";
     }
+
+    personaServiceImpl.createByForm(persona);
     return "redirect:/personas";
   }
 
