@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>personas</title>
+  </head>
+  <body>
+    <main>
+      <table>
+        <thead>
+          <th>nombre</th>
+          <th>apellidos</th>
+          <th>dni</th>
+        </thead>
+        <tbody>
+          <tr th:each="persona : ${personas}">
+            <td th:text="${persona.nombre}"></td>
+            <td th:text="${persona.apellidos}"></td>
+            <td th:text="${persona.dni}"></td>
+          </tr>
+        </tbody>
+      </table>
+      <a th:href="@{personas/form}">Crear una nueva persona</a>
+    </main>
+  </body>
+</html>

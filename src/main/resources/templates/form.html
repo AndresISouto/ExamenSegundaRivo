@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+  </head>
+  <body>
+    <form th:action="@{/personas/new}" method="POST" th:object="${persona}">
+      <p>nombre</p>
+      <input type="text" th:field="*{nombre}" />
+      <p>apellidos</p>
+      <input type="text" th:field="*{apellidos}" />
+      <p>dni</p>
+      <input type="text" th:field="*{dni}" />
+      <button type="submit">enviar</button>
+    </form>
+  </body>
+</html>
