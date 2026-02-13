@@ -25,6 +25,7 @@ public class PersonaMvcController {
   @GetMapping()
   public String getAll(Model model) {
     model.addAttribute("personas", personaServiceImpl.getAll());
+    model.addAttribute("idMax", personaServiceImpl.getPersonaWithMaxSalary());
     return "personas";
   }
 

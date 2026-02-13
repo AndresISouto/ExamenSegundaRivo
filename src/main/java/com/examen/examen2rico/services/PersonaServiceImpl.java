@@ -1,5 +1,6 @@
 package com.examen.examen2rico.services;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -71,6 +72,30 @@ public class PersonaServiceImpl {
     Double retencion = salario * 19 / 100;
 
     return retencion;
+  }
+
+  public Long getPersonaWithMaxSalary() {
+    List<Persona> personas = personaRepository.findAll();
+    HashMap<Long, Double> salarios = new HashMap<>();
+    Double salarioAcumulado = 0.0;
+    for (Persona persona : personas) {
+      for (VidaLaboral vl : persona.getVidaLaborar()) {
+        salarioAcumulado += vl.getSalarioBrutoAnual();
+      }
+      salarios.put(persona.getId(), salarioAcumulado);
+      salarioAcumulado = 0.0;
+    }
+
+    Long idMax = 1L;
+    Double maxSalary = 0.0;
+    for (Long id : salarios.keySet()) {
+      if (salarios.get(id) > maxSalary) {
+        maxSalary = salarios.get(id);
+        idMax = id;
+      }
+    }
+    return idMax;
+
   }
 
 }
