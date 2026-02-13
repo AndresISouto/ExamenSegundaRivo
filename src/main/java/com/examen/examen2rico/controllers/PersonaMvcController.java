@@ -26,6 +26,7 @@ public class PersonaMvcController {
   public String getAll(Model model) {
     model.addAttribute("personas", personaServiceImpl.getAll());
     model.addAttribute("idMax", personaServiceImpl.getPersonaWithMaxSalary());
+    // me da un error al hacer un if en el html asi que no pude resaltar el color :(
     return "personas";
   }
 
